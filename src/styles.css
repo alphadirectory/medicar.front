@@ -1,0 +1,61 @@
+.login-register {
+    color: #A8A8A8;
+    margin-top: calc(10% - 80px);
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.mat-form-field {
+    width: 100% !important;
+    margin-bottom: 3%;
+}
+
+.formFieldWidth480 .mat-form-field-infix {
+    border: 1px solid grey !important;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.x-form {
+    width: 350px;
+}
+
+.grid-fixed {
+    margin: 20px auto 0;
+}
+
+.toolbar {
+    background-color: white;
+}
+
+table {
+    width: 100%;
+}
+
+.lx-large {
+    max-width: 1080px;
+}
+
+.lx-small {
+    max-width: 400px;
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    color: white !important;
+}
+
+.mat-toolbar {
+    background-color: white !important;
+}

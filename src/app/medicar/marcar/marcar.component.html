@@ -1,0 +1,23 @@
+<div class="grid-fixed lx-small">
+    <app-especialidades></app-especialidades>
+    <app-medicos></app-medicos>
+    <app-agendas></app-agendas>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+            <button mat-button color="primary" class="btn-block" (click)="cancelActions()">
+                Cancelar
+            </button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button 
+                mat-raised-button 
+                color="primary" 
+                class="btn-block" 
+                [disabled]="confirmBtnDisable"
+                (click)="saveDate()"
+            >
+                Confirmar
+            </button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
