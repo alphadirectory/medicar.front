@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Login } from './auth/ models/main';
 import { AuthService } from './auth/services/auth.service';
 
 

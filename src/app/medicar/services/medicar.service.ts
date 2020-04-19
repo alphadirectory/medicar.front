@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class MedicarService {
   constructor(private http: HttpClient) { }
 
   getConsultas(): Observable<Consultas[]> {
-    return this.http.get<Consultas[]>(`${this.url}consultas`)
+    return this.http.get<Consultas[]>(`${this.url}consultas/`)
       .pipe(
         tap(res => true),
         catchError((err) => {
@@ -24,12 +24,18 @@ export class MedicarService {
       );
   }
 
-  getEspecialidades(payload = null): Observable<Especialidades[]> {
-    return this.http.get<Especialidades[]>(`${this.url}especialidades/${this.querystrinBuilder(payload)}`);
+  getEspecialidades(): Observable<Especialidades[]> {
+    return this.http.get<Especialidades[]>(`${this.url}especialidades/`);
   }
 
-  getMedicos(payload = null): Observable<Medicos[]> {
-    return this.http.get<Medicos[]>(`${this.url}medicos/${this.querystrinBuilder(payload)}`)
+  getMedicos(payload): Observable<Medicos[]> {
+    let params = new HttpParams();
+    params = params.append('search', payload.search);
+    params = params.append('especialidade', payload.especialidade);
+
+    return this.http.get<Medicos[]>(`${this.url}medicos/`,
+      { params: params }
+    )
       .pipe(
         tap(res => true),
         catchError((err) => {
@@ -40,28 +46,27 @@ export class MedicarService {
   }
 
   getAgendas(payload = null): Observable<Agendas[]> {
-    return this.http.get<Agendas[]>(`${this.url}agendas/${this.querystrinBuilder(payload)}`);
+    let params = new HttpParams();
+    params = params.append('medico', payload.medico);
+    params = params.append('especialidade', payload.especialidade);
+
+    return this.http.get<Agendas[]>(
+      `${this.url}agendas/`,
+      { params: params }
+    );
   }
 
   saveConsulta(payload): Observable<Consulta[]> {
-    return this.http.post<Consulta[]>(`${this.url}consultas/`, payload);
+    return this.http.post<Consulta[]>(
+      `${this.url}consultas/`,
+      payload
+    );
   }
 
-  delete(id) {
+  delete(id: number): Observable<any> {
     return this.http.delete(`${this.url}consultas/${id}`);
   }
 
-  querystrinBuilder(payload = null) {
-    if (payload === null) {
-      return '';
-    }
-    let body = '?';
-    Object.keys(payload).forEach((key) => {
-      body += `${key}=${encodeURIComponent(payload[key])}&`;
-    });
-    return body.substring(0, (body.length - 1));
-  }
- 
   get url(): string {
     return `${environment.urlApi}`;
   }

@@ -29,7 +29,7 @@ export class ConsultasComponent implements OnInit {
   }
 
   delete(row) {
-    this.mainService.saveConsulta(row.id).subscribe(
+    this.mainService.delete(row.id).subscribe(
       res => { this.openSnackBar('Sua consulta foi desmarcada!'); },
       err => { this.openSnackBar(err.message);}
     );

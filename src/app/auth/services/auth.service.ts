@@ -18,7 +18,7 @@ export class AuthService {
   ) { }
 
   register(payload: Register): Observable<Register> {
-    return this.http.post<Register>(`${this.url}novo-usuario/`, payload);
+    return this.http.post<Register>(`${this.url}register/`, payload);
   }
 
   login(payload: Login): Observable<Login> {
@@ -68,7 +68,7 @@ export class AuthService {
   }
 
   get url(): string {
-    return `${environment.urlApi}auth/`;
+    return `${environment.urlApi}`;
   }
 
 }

@@ -13,8 +13,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   formLogin: FormGroup = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
+    username: ['admin', Validators.required],
+    password: ['0031@dev', Validators.required]
   });
 
   checked = false;
@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     const payload = this.formLogin.value;
     this.authService.login(payload)
       .subscribe(
-        (success) => {
+        () => {
           this.router.navigateByUrl('consultas');
           this.openSnackBar('Logado com sucesso');
         },
-        (err) => { this.openSnackBar('Não foi possivel fazer login! Verifique se usuário e senha estão corretos'); }
+        () => { this.openSnackBar('Não foi possivel fazer login! Verifique se usuário e senha estão corretos'); }
       );
   }
 
