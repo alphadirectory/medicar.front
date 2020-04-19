@@ -13,8 +13,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   formLogin: FormGroup = this.fb.group({
-    username: ['admin', Validators.required],
-    password: ['0031@dev', Validators.required]
+    username: ['', Validators.required],
+    password: ['', Validators.required]
   });
 
   checked = false;
