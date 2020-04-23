@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   });
 
-  checked = false;
+  checked = false;  
   hide = false;
 
   constructor(

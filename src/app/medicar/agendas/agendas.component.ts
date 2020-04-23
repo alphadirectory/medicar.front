@@ -52,10 +52,10 @@ export class AgendasComponent implements OnInit {
   }
 
   selectDay(day) {
-    if (day.hasOwnProperty('horario')) {
-      if (day.horario.length > 0) {
+    if (day.hasOwnProperty('horarios')) {
+      if (day.horarios.length > 0) {
         this.chosenDate = day.id;
-        this.hoursListOptions = day.horario;
+        this.hoursListOptions = day.horarios;
         this.selectHourDisable = false;
       } else {
         this.openSnackBar('Não encontramos nenhum horário disponível para essa data');
@@ -73,3 +73,4 @@ export class AgendasComponent implements OnInit {
 
   openSnackBar(message) { this.snackBar.open(message, 'Fechar', { duration: 3000 }); }
 }
+  
